@@ -27,7 +27,7 @@ ul>li {
     background-image: url(../img/Background/lendo.jpg);
     background-repeat: no-repeat;
     background-position: top;
-    background-size: 100%;
+    background-size: cover;
     height: 70vh;
 }
 
