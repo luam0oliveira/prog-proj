@@ -1,1 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo-img {
+    width: 75px;
+    filter: invert();
+}
+
+.header-icons {
+    width: 25px;
+    height: 25px;
+    fill: #FFF;
+}
+
+ul>li {
+    padding: 5px 0;
+}
+
+.carrinho-img {
+    width: 30px;
+}
+
+.super-ofertas {
+    height: 500px;
+    background-image: url(/img/Background/lendo.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+}
