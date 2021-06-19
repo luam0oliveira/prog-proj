@@ -13,6 +13,13 @@
     width: 25px;
     height: 25px;
     fill: #FFF;
+
+}
+
+.header-icons:hover {
+    background-color: #FFF;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 ul>li {
@@ -22,6 +29,8 @@ ul>li {
 .carrinho-img {
     width: 30px;
 }
+
+
 
 #banner {
     background-image: url(../img/Background/lendo.jpg);
