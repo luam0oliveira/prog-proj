@@ -54,3 +54,26 @@ ul>li {
 .read-more {
     font-weight: bolder;
 }
+
+.main-img {
+    background-image: url("../img/Background/lendo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#login {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.nav-list li:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.footer-text li:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.logo {
+    filter: invert(99%) sepia(1%) saturate(649%) hue-rotate(149deg) brightness(116%) contrast(100%);
+}
