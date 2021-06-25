@@ -13,27 +13,35 @@
 </head>
 
 <body>
-    <header class=" bg-dark">
-        <div class="container d-flex gap-3 border-bottom py-3 px-0">
-            <a href="#" class="flex-shrink-1 align-self-center me-0">
-                <img src="img/logo/baby-book.png" alt="" width="75px">
-            </a>
-            <form class="d-flex align-self-center w-100">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            <a href="#" class="flex-shrink-1 align-self-center header-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-cart header-icons-svg" viewBox="0 0 16 16">
-                    <path
-                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                </svg>
-            </a>
-            <a href="#" class="flex-shrink-1 align-self-center header-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person" viewBox="0 0 16 16">
-                    <path
-                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                </svg>
-            </a>
+    <header class="bg-dark">
+        <div class="container d-flex justify-content-between gap-3 border-bottom py-3 px-0">
+            <div class="d-flex">
+                <a href="#" class="align-self-center">
+                    <img src="img/logo/baby-book.png" alt="" width="75px">
+                </a>
+            </div>
+
+            <div class="d-flex">
+                <form class="d-flex align-self-center me-4">
+                    <button class="btn btn-outline-light me-2" type="submit">Search</button>
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                </form>
+                <a href="#" class=" align-self-center header-icons me-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-cart header-icons-svg" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </svg>
+                </a>
+                <a href="#" class=" align-self-center header-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person" viewBox="0 0 16 16">
+                        <path
+                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                    </svg>
+                </a>
+
+            </div>
+
+
         </div>
 
         <nav class="navbar py-1 ">
@@ -60,45 +68,46 @@
 
     <main>
         <section id="banner" class="d-flex align-items-center mb-3">
-            <div class="w-100">
-                <h1 class="text-center fw-bolder">Os melhores livros do Brasil</h1>
-                <p class="text-center">Todos os seus livros preferidos reunidos em um só lugar</p>
+            <div class="container">
+                <h1 class="  mb-5  fw-normal">Os melhores livros do Brasil</h1>
             </div>
+
         </section>
-        <section id="destaque" class="w-100 mb-3">
+        <section id="destaque" class="w-100 mb-3 bg-warning.bg-gradient">
             <div class="container">
                 <h1 class="text-center">Livros destaques</h1>
                 <hr>
-                <div class="row row-cols-xl-5  g-4 ">
+                <div class="row row-cols-xl-3  g-4 ">
                     <div class="col">
                         <div class="card">
-                            <a href="#">
-                                <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
+                            <a href="#" class="card-link card-image mt-3">
+                                <img src="img/livros/1001004000772645.jpg" class="card-img-top  " alt="...">
                             </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
+                            <div class="card-body text-center">
+                                <div class="titulo-autor mb-2">
+                                    <a class="text-decoration-none fs-5 fw-bold text-dark">
+                                        Teste
+                                    </a> <br>
+                                    <a href="#" class="text-decoration-none fs-6 fw-bold text-black-50">
+                                        luiz carlos
+                                    </a>
                                 </div>
+                                <div class="preco mb-2">
+                                    <a href="#" class="preco text-decoration-none fs-4 fw-bold text-dark">73,90</a>
+                                </div>
+                                <a href="#" class="btn btn-success w-100 ">Comprar</a>
                             </div>
                         </div>
                     </div>
+
 
                     <div class="col">
                         <div class="card">
                             <a href="#">
                                 <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
+
                             </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="col">
@@ -106,46 +115,10 @@
                             <a href="#">
                                 <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
                             </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card">
-                            <a href="#">
-                                <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <a href="#">
-                                <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
 
 
                 </div>
@@ -155,20 +128,13 @@
             <div class="container">
                 <h1 class="text-center">Promoção</h1>
                 <hr>
-                <div class="row row-cols-xl-5  g-4 ">
+                <div class="row row-cols-xl-3  g-4 ">
                     <div class="col">
                         <div class="card">
                             <a href="#">
                                 <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
                             </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 
@@ -177,63 +143,17 @@
                             <a href="#">
                                 <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
                             </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <a href="#">
-                                <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <a href="#">
-                                <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <a href="#">
-                                <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <a href="#">
+                                <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
+                            </a>
 
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -241,20 +161,13 @@
             <div class="container">
                 <h1 class="text-center">Indicações ao usuário</h1>
                 <hr>
-                <div class="row row-cols-xl-5  g-4 ">
+                <div class="row row-cols-xl-3  g-4 ">
                     <div class="col">
                         <div class="card">
                             <a href="#">
                                 <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
                             </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 
@@ -263,14 +176,7 @@
                             <a href="#">
                                 <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
                             </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="col">
@@ -278,46 +184,10 @@
                             <a href="#">
                                 <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
                             </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card">
-                            <a href="#">
-                                <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <a href="#">
-                                <img src="img/livros/1001004000772645.jpg" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural
-                                    lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="text-center ">
-                                    <a class="btn btn-primary read-more" href="#">Mais informações</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
 
 
                 </div>
@@ -329,25 +199,25 @@
         <div class="container">
             <div class="footer-title py-2">
                 <h2 class="text-white text-center ">
-                    <img class="logo" src="img/logo/baby-book.svg" width="75px" alt="">
+                    <img class="logo" src="img/logo/baby-book.png" width="75px" alt="">
                     FOR EDUCATION
                 </h2>
             </div>
             <div class="footer-text">
                 <ul class="d-flex justify-content-center m-0">
-                    <li class="px-2">
+                    <li class="px-2 footer-nav rounded-3">
                         <a href="#" class="text-decoration-none text-white m-0">teste</a>
                     </li>
-                    <li>
+                    <li class="mx-2">
                         <p class="text-white m-0">|</p>
                     </li>
-                    <li class="px-2">
+                    <li class="px-2 footer-nav rounded-3">
                         <a href="#" class="text-decoration-none text-white m-0">teste</a>
                     </li>
-                    <li>
+                    <li class="mx-2">
                         <p class="text-white m-0">|</p>
                     </li>
-                    <li class="px-2">
+                    <li class="px-2 footer-nav rounded-3">
                         <a href="#" class="text-decoration-none text-white m-0">teste</a>
                     </li>
                 </ul>

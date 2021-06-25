@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&display=swap');
 
 * {
     font-family: 'Montserrat', sans-serif;
@@ -47,9 +47,6 @@ ul>li {
     width: 100%;
 }
 
-.card-title {
-    font-weight: bolder;
-}
 
 .read-more {
     font-weight: bolder;
@@ -70,10 +67,15 @@ ul>li {
     background-color: rgba(255, 255, 255, 0.08);
 }
 
-.footer-text li:hover {
-    background: rgba(255, 255, 255, 0.08);
+.card-link {
+    margin-right: 5rem !important;
+    margin-left: 5rem !important;
 }
 
-.logo {
-    filter: invert(99%) sepia(1%) saturate(649%) hue-rotate(149deg) brightness(116%) contrast(100%);
+.card-link:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.footer-nav:hover {
+    background: rgba(255, 255, 255, 0.08);
 }
