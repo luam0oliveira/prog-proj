@@ -2,6 +2,7 @@
 
 * {
     font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
 }
 
 .logo-img {
@@ -90,4 +91,11 @@ ul>li {
 .card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+/* A partir da qui é a página de produto */
+
+
+.botoes {
+    border-radius: 20px;
 }
