@@ -14,13 +14,10 @@
     width: 25px;
     height: 25px;
     fill: #FFF;
-
 }
 
 .header-icons:hover {
-    background-color: #FFF;
-    padding: 5px;
-    border-radius: 5px;
+    width: 27px;
 }
 
 ul>li {
@@ -31,14 +28,15 @@ ul>li {
     width: 30px;
 }
 
-
-
-#banner {
-    background-image: url(../img/Background/lendo.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 70vh;
+#carrousel {
+    height: 75vh;
 }
+
+.carrousel-img {
+    object-fit: cover;
+    height: 75vh;
+}
+
 
 .card {
     padding: 0;
@@ -59,10 +57,6 @@ ul>li {
     background-size: cover;
 }
 
-#login {
-    max-width: 650px;
-    margin: 0 auto;
-}
 
 .nav-list li:hover {
     background-color: rgba(255, 255, 255, 0.08);
@@ -73,8 +67,6 @@ ul>li {
     padding-left: 5rem !important;
     background-color: white;
 }
-
-
 
 .footer-nav:hover {
     background: rgba(255, 255, 255, 0.08);
@@ -98,4 +90,23 @@ ul>li {
 
 .botoes {
     border-radius: 20px;
+}
+
+/* A partir login */
+
+#login {
+    overflow: hidden;
+}
+
+#login:first-child {
+    border-radius: 15px;
+    background-color: #f1f1f1;
+}
+
+.padding-login {
+    padding: 180px 0;
+}
+
+#loginForm {
+    max-width: 300px;
 }
