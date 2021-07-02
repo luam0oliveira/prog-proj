@@ -5,11 +5,7 @@
     box-sizing: border-box;
 }
 
-.logo-img {
-    width: 75px;
-    filter: invert();
-}
-
+/* Header e footer */
 .header-icons {
     width: 25px;
     height: 25px;
@@ -24,9 +20,15 @@ ul>li {
     padding: 5px 0;
 }
 
-.carrinho-img {
-    width: 30px;
+.nav-list li:hover {
+    background-color: rgba(255, 255, 255, 0.08);
 }
+
+.footer-nav:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Pagina inicial*/
 
 #carrousel {
     height: 75vh;
@@ -37,42 +39,8 @@ ul>li {
     height: 75vh;
 }
 
-
 .card {
     padding: 0;
-}
-
-.card>img {
-    width: 100%;
-}
-
-
-.read-more {
-    font-weight: bolder;
-}
-
-.main-img {
-    background-image: url("../img/Background/lendo.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-
-.nav-list li:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-}
-
-.card-link {
-    padding-right: 5rem !important;
-    padding-left: 5rem !important;
-    background-color: white;
-}
-
-.footer-nav:hover {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.card {
     border-radius: 4px;
     background: #fff;
     box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
@@ -85,12 +53,26 @@ ul>li {
     box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
 }
 
-/* A partir da qui é a página de produto A */
+.card>img {
+    width: 100%;
+}
+
+.read-more {
+    font-weight: bolder;
+}
+
+.card-link {
+    padding-right: 5rem !important;
+    padding-left: 5rem !important;
+    background-color: white;
+}
+
+/* Produto */
 .botoes {
     border-radius: 20px;
 }
 
-/* On screens that are 992px or less, set the background color to blue */
+/* Responsividade Produto */
 @media screen and (max-width: 992px) {
     #indicacoes {
         display: flex;
@@ -99,8 +81,7 @@ ul>li {
     }
 }
 
-/* A partir login */
-
+/* Login */
 #login {
     overflow: hidden;
 }
@@ -118,8 +99,7 @@ ul>li {
     max-width: 300px;
 }
 
-/* A partir catalogo*/
-
+/* Catalogo */
 #filtro>h5 {
     color: #efefef;
     background: #626262;
@@ -144,18 +124,16 @@ ul>li {
     padding: 10px;
 }
 
-
+/* Responsividade Catalogo */
 @media screen and (max-width: 992px) {
     #maior-catalogo {
         border-left: none;
     }
 }
 
-/* A partir carrinho*/
-
+/* Cesta */
 #dados {
     background: #c4c4c4;
-
 }
 
 .according-but {
