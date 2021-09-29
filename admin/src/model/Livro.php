@@ -11,11 +11,6 @@ class Livro{
     private String $descricao;
     private String $imagem;
 
-    function __construct()
-    {
-        
-    }
-
     public function getId(): int
     {
         return $this->id;
@@ -59,7 +54,7 @@ class Livro{
  
     public function setPreco($preco)
     {
-        $this->Preco = $preco;
+        $this->preco = $preco;
 
         return $this;
     }

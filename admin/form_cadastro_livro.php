@@ -58,20 +58,53 @@ if ($_GET['a']=='3'){
         <label for="tituloInput">Título: </label>
         <input type="text" name="titulo" id="tituloInput" class="input-padrao" required="true" size=50>
         
-        <label for="autor">Autor:</label>
-        <input type="text" list="autores" name="autor" id="autor" class="input-padrao" required="true" size="30"> 
-        <button type="button" class="btn btn-info btn-circle btn-lg" data-toggle="modal" data-target="#adicionarAutor">+</button>
+        <label for="autorSelect">Autor:</label>
+        <select name="autor" id="autorSelect">
+            <?php
+                foreach($autores as $autor){
+            ?>
+                <option value="<?=$autor['id']?>"><?=$autor['nome']?></option>
+            <?php
+                }
+            ?>
+        </select>
+        <button type="button" class="btn btn-info btn-circle  btn-sm" onclick="adicionarAutor()">Adicionar</button>
+        <br>
+        <div id="autor-tags">
+            <button type="button" class="btn btn-info rounded-circle btn-sm" data-toggle="modal" data-target="#adicionarAutor">+</button>
+        </div>
+        
         
         <label for="precoInput">Preço: </label>
         <input type="text" name="preco" id="precoInput" class="input-padrao" required="true" size=5>
        
-        <label for="editoraInput">Editora:</label>
-        <input type="text" list="editoras" name="editora" id="editoraInput" class="input-padrao" required="true" size="30"> 
+        <label for="editoraSelect">Editora:</label>
+        <select name="editora" id="editoraSelect">
+            <?php
+                foreach($editoras as $editora){
+            ?>
+                <option value="<?=$editora['id']?>"><?=$editora['nome']?></option>
+            <?php
+                }
+            ?>
+        </select> 
         <button type="button" class="btn btn-info btn-circle btn-lg" data-toggle="modal" data-target="#adicionarEditora">+</button>
 
-        <label for="generoInput">Genero:</label>
-        <input type="text" list="generos" name="genero" id="generoInput" class="input-padrao" required="true" size="30"> 
-        <button type="button" class="btn btn-info btn-circle btn-lg" data-toggle="modal" data-target="#adicionarGenero">+</button>
+        <label for="generoSelect">Genero:</label>
+        <select name="genero" id="generoSelect">
+            <?php
+                foreach($generos as $genero){
+            ?>
+                <option value="<?=$genero['id']?>"><?=$genero['nome']?></option>
+            <?php
+                }
+            ?>
+        </select> 
+        <button type="button" class="btn btn-info btn-circle  btn-sm" onclick="adicionarGenero()">Adicionar</button>
+        <div id="genero-tags">
+            <button type="button" class="btn btn-info btn-circle btn-lg" data-toggle="modal" data-target="#adicionarGenero">+</button>
+        </div>
+        
 
         <label for="quantidadeInput">Quantidade: </label>
         <input type="number" name="quantidade" id="quantidadeInput" class="input-padrao" required="true" size=5>
@@ -86,38 +119,6 @@ if ($_GET['a']=='3'){
         <input type="file" name="imagem" id="imagemInput" class="input-padrao", required="true">
 
         <button type="submit" id="btn">Cadastrar</button>
-
-        <datalist id="autores">
-            <?php
-                foreach($autores as $autor){
-            ?>
-                <option value="<?=$autor['nome']?>">
-            <?php
-                }
-            ?>
-        </datalist>
-
-        <datalist id="editoras">
-            <?php
-                foreach($editoras as $editora){
-            ?>
-                <option value="<?=$editora['nome']?>">
-            <?php
-                }
-            ?>
-        </datalist>
-
-        <datalist id="generos">
-            <?php
-                foreach($generos as $genero){
-            ?>
-                <option value="<?=$genero['nome']?>">
-            <?php
-                }
-            ?>
-        </datalist>
-
-
     </form>
     
 

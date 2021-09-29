@@ -24,12 +24,7 @@
     $descricao = $_POST['descricao'];
     $imagem = pegarImagem($_FILES);
 
-    $editoraDAO = new EditoraDAO();
-    $autorDAO = new AutorDAO();
-    $generoDAO = new GeneroDAO();   
-    $editora = $editoraDAO->obterIdNome($editora);
-    $autor = $autorDAO->obterIdNome($autor);
-    $genero = $generoDAO->obterIdNome($genero);
+    print_r($_POST); 
 
     $livro = new Livro();
     $livro->setIsbn($isbn);
@@ -41,12 +36,6 @@
     $livro->setDescricao($descricao);
     $livro->setImagem($imagem);
 
-    
-
-    print($livro->getPreco());
-    
-
- 
     $livroDAO = new LivroDAO();
     $livroDAO->cadastraLivro($livro, $genero, $autor);
 ?>

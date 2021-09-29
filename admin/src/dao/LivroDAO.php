@@ -8,7 +8,7 @@ require_once "EditoraDAO.php";
 
 
 class LivroDAO{
-    function cadastraLivro(Livro $livro, int $idGenero, int $idAutor){
+    function cadastraLivro(Livro $livro, array $generos, array $autores){
         $conexao = ConexaoBD::getConexao();
 
         $sql = "INSERT INTO livro(isbn,titulo,preco,editora,quantidade,ano_publicacao,descricao,imagem)
@@ -20,26 +20,26 @@ class LivroDAO{
                 '{$livro->getAno_publicacao()}',
                 '{$livro->getDescricao()}',
                 '{$livro->getImagem()}');
-            ";
-        
-
-        
+            ";    
         $conexao->exec($sql);
 
-        $sql = "SELECT id FROM livro WHERE isbn = {$livro->getIsbn()}";
-        
-        $stmt = $conexao->query($sql);
-        $idLivro = $stmt->fetchColumn();
+        $idLivro = intval($conexao->lastInsertId());
 
-        $sql = "INSERT INTO lista_genero(genero_id,livro_id)
-            VALUES({$idGenero},
-                {$idLivro});
+        foreach($generos as $genero){
+            $sql = "INSERT INTO lista_genero(genero_id,livro_id)
+            VALUES({$genero},
+                {$idLivro});";
+            
+            $conexao->exec($sql);
+        }
 
-        INSERT INTO autores(autor_id,livro_id)
-            VALUES({$idAutor},
+        foreach($autores as $autor){
+            $sql = "INSERT INTO autores(autor_id,livro_id)
+            VALUES({$autor},
                 {$idLivro})";
-                
-        $conexao->exec($sql);
+
+            $conexao->exec($sql);
+        }
     }
 
     function listarLivros(){   
