@@ -17,7 +17,6 @@
             <th>titulo</th>
             <th>preco</th>
             <th>quantidade</th>
-            <th>autores</th>
             <th>---</th>
         </tr>
 
@@ -29,13 +28,10 @@
             <td><?=$livro['id']?></td>          
             <td><?=$livro['titulo']?></td>
             <td>R$<?=$livro['preco']?></td>
-            <td><?=$livro['quantidade']?></td>
-            <td><?=$livro['nome']?></td>
-            
+            <td><?=$livro['quantidade']?></td>            
             <td>
-                
-                <a href="remove_livro.php?id=<?=$livro['id']?>" class="btn btn-danger btn-sm">Remover</a>
-                <a href="form_alterar_livro.php?id=<?=$livro['id']?>" class="btn btn-warning btn-sm">Alterar</a>
+                <a href="remove_livro.php?id=<?=$livro['id']?>&a=0" class="btn btn-danger btn-sm">Remover</a>
+                <a href="form_alterar_livro.php?id=<?=$livro['id']?>&a=0" class="btn btn-warning btn-sm">Alterar</a>
             </td>
         </tr>
         <?php

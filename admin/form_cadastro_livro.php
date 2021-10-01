@@ -1,126 +1,163 @@
 <?php
 
-include "menu.php";
+    include "menu.php";
 
-require_once "src/dao/AutorDAO.php";
-require_once "src/model/Autor.php";
-require_once "src/dao/EditoraDAO.php";
-require_once "src/model/Editora.php";
-require_once "src/dao/GeneroDAO.php";
-require_once "src/model/Genero.php";
+    require_once "src/dao/AutorDAO.php";
+    require_once "src/model/Autor.php";
+    require_once "src/dao/EditoraDAO.php";
+    require_once "src/model/Editora.php";
+    require_once "src/dao/GeneroDAO.php";
+    require_once "src/model/Genero.php";
 
-$autor = new Autor();
-$autorDAO = new AutorDAO();
-$autores = $autorDAO->listarAutores();
+    $autor = new Autor();
+    $autorDAO = new AutorDAO();
+    $autores = $autorDAO->listarAutores();
 
-$editora = new Editora();
-$editoraDAO = new EditoraDAO();
-$editoras = $editoraDAO->listarEditoras();
+    $editora = new Editora();
+    $editoraDAO = new EditoraDAO();
+    $editoras = $editoraDAO->listarEditoras();
 
-$genero = new Genero();
-$generoDAO = new GeneroDAO();
-$generos = $generoDAO->listarGeneros();
+    $genero = new Genero();
+    $generoDAO = new GeneroDAO();
+    $generos = $generoDAO->listarGeneros();
 
-if ($_GET['a']=='1'){
-    $nome = $_POST['nome'];
+    if ($_GET['a']=='1'){
+        $nome = $_POST['nome'];
 
-    $autor->setNome($nome);
+        $autor->setNome($nome);
 
-    $autorDAO->cadastrarAutor($autor);
-}
+        $autorDAO->cadastrarAutor($autor);
+    }
 
-if ($_GET['a']=='2'){
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $telefone = $_POST['telefone'];
+    if ($_GET['a']=='2'){
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $telefone = $_POST['telefone'];
 
-    $editora->setNome($nome);
-    $editora->setEmail($email);
-    $editora->setTelefone($telefone);
+        $editora->setNome($nome);
+        $editora->setEmail($email);
+        $editora->setTelefone($telefone);
 
-    $editoraDAO->cadastrarEditora($editora);
-}
+        $editoraDAO->cadastrarEditora($editora);
+    }
 
-if ($_GET['a']=='3'){
-    $nome = $_POST['nome'];
-    
-    $genero->setNome($nome);
+    if ($_GET['a']=='3'){
+        $nome = $_POST['nome'];
+        
+        $genero->setNome($nome);
 
-    $generoDAO->cadastrarGenero($genero);
-}
+        $generoDAO->cadastrarGenero($genero);
+    }
 
-?>
+    ?>
 
-<form enctype="multipart/form-data" action="cadastro_livro.php" method="POST">
-        <label for="ISBNInput">ISBN: </label>
-        <input type="text" name="isbn" id="ISBNInput" class="input-padrao" size=50>
+    <form class="form row" enctype="multipart/form-data" action="cadastro_livro.php" method="POST">
+        <div class="form-group col-6">
+            <label class="form-label" for="ISBNInput">ISBN: </label>
+            <input class="form-control" type="text" name="isbn" id="ISBNInput" class="input-padrao" size=50>
+        </div>
+
+        <div class="form-group col-6">
+            <label class="form-label" for="tituloInput">Título: </label>
+            <input class="form-control" type="text" name="titulo" id="tituloInput" class="input-padrao" required="true" size=50>
+        </div>
+
             
-        <label for="tituloInput">Título: </label>
-        <input type="text" name="titulo" id="tituloInput" class="input-padrao" required="true" size=50>
-        
-        <label for="autorSelect">Autor:</label>
-        <select name="autor" id="autorSelect">
-            <?php
-                foreach($autores as $autor){
-            ?>
-                <option value="<?=$autor['id']?>"><?=$autor['nome']?></option>
-            <?php
-                }
-            ?>
-        </select>
-        <button type="button" class="btn btn-info btn-circle  btn-sm" onclick="adicionarAutor()">Adicionar</button>
-        <br>
-        <div id="autor-tags">
-            <button type="button" class="btn btn-info rounded-circle btn-sm" data-toggle="modal" data-target="#adicionarAutor">+</button>
+        <div class="form-group col-6">
+            <label class="form-label" for="autorSelect">Autor:</label>
+            
+            <div class="d-flex flex-row">
+                <select class="form-select me-3" name="autor" id="autorSelect">
+                    <?php
+                        foreach($autores as $autor){
+                    ?>
+                        <option value="<?=$autor['id']?>"><?=$autor['nome']?></option>
+                    <?php
+                        }
+                    ?>
+                </select>
+                <button type="button" class="btn btn-info btn-circle btn-sm my-0" onclick="adicionarAutor()">Adicionar</button>
+            </div>
+            <div id="autor-tags">
+                <button class="btn btn-outline-primary rounded-circle" type="button" class="btn btn-info rounded-circle btn-sm" data-toggle="modal" data-target="#adicionarAutor">+</button>
+            </div>
+        </div>
+
+        <div class="form-group col-6">
+            <label class="form-label" for="generoSelect">Genero:</label>
+
+            <div class="d-flex flex-row">
+                <select class="form-select me-3" name="genero" id="generoSelect">
+                    <?php
+                        foreach($generos as $genero){
+                    ?>
+                        <option value="<?=$genero['id']?>"><?=$genero['nome']?></option>
+                    <?php
+                        }
+                    ?>
+                </select> 
+                <button type="button" class="btn btn-info btn-circle btn-sm my-0" onclick="adicionarGenero()">Adicionar</button>
+            </div>
+
+            <div id="genero-tags">
+                <button class="btn btn-outline-primary rounded-circle" type="button" class="btn btn-info btn-circle btn-lg" data-toggle="modal" data-target="#adicionarGenero">+</button>
+            </div>
+        </div>
+
+        <div class="form-group col-3">
+            <label class="form-label" for="editoraSelect">Editora:</label>
+
+            <div class="d-flex flex-row">
+                <select class="form-select me-2" name="editora" id="editoraSelect">
+                    <?php
+                        foreach($editoras as $editora){
+                    ?>
+                        <option value="<?=$editora['id']?>"><?=$editora['nome']?></option>
+                    <?php
+                        }
+                    ?>
+                </select> 
+
+                <button class="btn btn-outline-primary rounded-circle my-0" type="button" class="btn btn-info btn-circle btn-lg" data-toggle="modal" data-target="#adicionarEditora">+</button>
+
+            </div>
+            
+            
         </div>
         
         
-        <label for="precoInput">Preço: </label>
-        <input type="text" name="preco" id="precoInput" class="input-padrao" required="true" size=5>
-       
-        <label for="editoraSelect">Editora:</label>
-        <select name="editora" id="editoraSelect">
-            <?php
-                foreach($editoras as $editora){
-            ?>
-                <option value="<?=$editora['id']?>"><?=$editora['nome']?></option>
-            <?php
-                }
-            ?>
-        </select> 
-        <button type="button" class="btn btn-info btn-circle btn-lg" data-toggle="modal" data-target="#adicionarEditora">+</button>
-
-        <label for="generoSelect">Genero:</label>
-        <select name="genero" id="generoSelect">
-            <?php
-                foreach($generos as $genero){
-            ?>
-                <option value="<?=$genero['id']?>"><?=$genero['nome']?></option>
-            <?php
-                }
-            ?>
-        </select> 
-        <button type="button" class="btn btn-info btn-circle  btn-sm" onclick="adicionarGenero()">Adicionar</button>
-        <div id="genero-tags">
-            <button type="button" class="btn btn-info btn-circle btn-lg" data-toggle="modal" data-target="#adicionarGenero">+</button>
+        <div class="form-group col-3">
+            <label class="form-label" for="precoInput">Preço: </label>
+            <input class="form-control" type="text" name="preco" id="precoInput" class="input-padrao" required="true" size=5>
         </div>
         
 
-        <label for="quantidadeInput">Quantidade: </label>
-        <input type="number" name="quantidade" id="quantidadeInput" class="input-padrao" required="true" size=5>
+        <div class="form-group col-3">
+            <label class="form-label" for="quantidadeInput">Quantidade: </label>
+            <input class="form-control" type="number" name="quantidade" id="quantidadeInput" class="input-padrao" required="true" size=5>
+        </div>
         
-        <label for="anoPubInput">Ano de publicação: </label>
-        <input type="number" name="ano_publicacao" id="anoPubInput" class="input-padrao" required="true" size=5>
+        <div class="form-group col-3">
+            <label class="form-label" for="anoPubInput">Ano de publicação: </label>
+            <input class="form-control" type="number" name="ano_publicacao" id="anoPubInput" class="input-padrao" required="true" size=5>
+            
+        </div>
         
-        <label for="descricaoInput">Descricão: </label>
-        <textarea name="descricao" id="descricaoInput" cols="50" rows="10"></textarea>
+        <div class="form-group col-12">
+            <label class="form-label" for="descricaoInput">Descricão: </label>
+            <textarea class="form-control" name="descricao" id="descricaoInput" cols="50" rows="10"></textarea>
+        </div>
+        
+        <div class="col-12">
+            <label for="imagemInput">Imagem: </label>
+            <input class="form-control" type="file" name="imagem" id="imagemInput" class="input-padrao" required="true">
+        </div>
 
-        <label for="imagemInput">Imagem: </label>
-        <input type="file" name="imagem" id="imagemInput" class="input-padrao", required="true">
-
-        <button type="submit" id="btn">Cadastrar</button>
+        <div class="mt-4 d-flex justify-content-center col-12">
+            <button class="btn btn-success w-25" type="submit" id="btn">Cadastrar</button>
+        </div>
     </form>
-    
+        
 
     <!-- Cadastro de autor -->
     <div class="modal fade" id="adicionarAutor" role="dialog">
@@ -134,9 +171,14 @@ if ($_GET['a']=='3'){
                 <div class="modal-body">
                     <h1>Cadastrar autor</h1>
                     <form action="form_cadastro_livro.php?a=1" method="POST">
-                        <label for="nomeInput">Nome:</label>
-                        <input type="text" name="nome" id="nomeInput" class="input-padrao" required="true" size=20>
-                        <button type="submit" id="botaoId">Cadastrar</button>
+                        <div class="form-group mb-4">
+                            <label for="nomeInput">Nome:</label>
+                            <input class="form-control" type="text" name="nome" id="nomeInput" class="input-padrao" required="true">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-secondary btn-lg" type="submit" id="botaoId">Cadastrar</button>
+                        </div>
+                        
                     </form>
                 </div>
 
@@ -159,13 +201,24 @@ if ($_GET['a']=='3'){
                 <div class="modal-body">
                     <h1>Cadastrar editora</h1>
                     <form action="form_cadastro_livro.php?a=2" method="POST">
-                        <label for="nomeInput">Nome:</label>
-                        <input type="text" name="nome" id="nomeInput" class="input-padrao" required="true" size=20>
-                        <label for="emailInput">Email:</label>
-                        <input type="text" name="email" id="emailInput" class="input-padrao" required="true" size=20>
-                        <label for="telInput">Telefone:</label>
-                        <input type="text" name="telefone" id="telInput" class="input-padrao" required="true" size=20>
-                        <button type="submit" id="botaoId">Cadastrar</button>
+                        <div class="form-group mb-4">
+                            <label for="nomeInput">Nome:</label>
+                            <input class="form-control" type="text" name="nome" id="nomeInput" class="input-padrao" required="true">
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="emailInput">Email:</label>
+                            <input class="form-control" type="text" name="email" id="emailInput" class="input-padrao" required="true" size=20>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="telInput">Telefone:</label>
+                            <input class="form-control" type="text" name="telefone" id="telInput" class="input-padrao" required="true" size=20>
+                        </div>
+                        
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-secondary btn-lg" type="submit" id="botaoId">Cadastrar</button>
+                        </div>
                     </form>
                 </div>
 
@@ -188,9 +241,13 @@ if ($_GET['a']=='3'){
                 <div class="modal-body">
                     <h1>Cadastrar genero</h1>
                     <form action="form_cadastro_livro.php?a=3" method="POST">
-                        <label for="nomeInput">Nome:</label>
-                        <input type="text" name="nome" id="nomeInput" class="input-padrao" required="true" size=20>
-                        <button type="submit" id="botaoId">Cadastrar</button>
+                        <div class="form-group mb-4">
+                            <label for="nomeInput">Nome:</label>
+                            <input class="form-control" type="text" name="nome" id="nomeInput" class="input-padrao" required="true" size=20>
+                        </div>    
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-secondary btn-lg" type="submit" id="botaoId">Cadastrar</button>
+                        </div>
                     </form>
                 </div>
 
@@ -202,8 +259,8 @@ if ($_GET['a']=='3'){
     </div>
 
 
-<?php
+    <?php
 
-include "rodape.php";
+    include "rodape.php";
 
 ?>

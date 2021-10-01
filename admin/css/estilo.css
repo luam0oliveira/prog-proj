@@ -10,7 +10,7 @@ h1 {
     margin: 2rem auto;
 }
 
-form {
+.form {
     width: auto;
     height: auto;
     margin: 4rem auto;
@@ -58,4 +58,28 @@ th {
 
 .desabilitado{
     background-color: #AAA;
+}
+
+#autor-tags label{
+    margin: 0 3px;
+}
+
+#autor-tags label:last-child{
+    margin:0;
+}
+
+#autor-tags label:first-child{
+    margin: 0;
+}
+
+#genero-tags label{
+    margin: 0 3px;
+}
+
+#genero-tags label:last-child{
+    margin:0;
+}
+
+#genero-tags label:first-child{
+    margin: 0;
 }
