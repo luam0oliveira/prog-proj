@@ -1,6 +1,9 @@
 <?php
 
+// import model
 require_once __DIR__ . "/../model/Livro.php";
+
+// import dao
 require_once "ConexaoBD.php";
 require_once "GeneroDAO.php";
 require_once "AutorDAO.php";
@@ -11,7 +14,7 @@ class LivroDAO{
     function cadastraLivro(Livro $livro, array $generos, array $autores){
         $conexao = ConexaoBD::getConexao();
 
-        $sql = "INSERT INTO livro(isbn,titulo,preco,editora,quantidade,ano_publicacao,descricao,imagem)
+        $sql = "INSERT INTO livro(isbn,titulo,preco,editora,quantidade,ano_publicacao,descricao,imagem,promocao)
             VALUES('{$livro->getIsbn()}',
                 '{$livro->getTitulo()}',
                 '{$livro->getPreco()}',
@@ -19,9 +22,9 @@ class LivroDAO{
                 '{$livro->getQuantidade()}',
                 '{$livro->getAno_publicacao()}',
                 '{$livro->getDescricao()}',
-                '{$livro->getImagem()}');
-            ";    
-        $conexao->exec($sql);
+                '{$livro->getImagem()}',
+                '{$livro->getPromocao()}');";    
+        $sit = $conexao->exec($sql);
 
         $idLivro = intval($conexao->lastInsertId());
 
@@ -40,19 +43,49 @@ class LivroDAO{
 
             $conexao->exec($sql);
         }
+
+        return $sit;
     }
 
     function listarLivros(){   
         $conexao = ConexaoBD::getConexao();
 
-        $sql = "SELECT id,titulo,preco, quantidade FROM livro";
+        $sql = "SELECT L.id,L.titulo,L.preco,L.quantidade,L.promocao, L.imagem,
+        GROUP_CONCAT(A.nome, '') AS autor
+        FROM livro L
+        INNER JOIN autores Aus
+        ON L.id = Aus.livro_id
+        INNER JOIN autor A
+        ON Aus.autor_id = A.id
+        GROUP BY L.id";
 
         $stmt = $conexao->query($sql);
-
+        
         $discos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $discos;
     }
+
+    function listarLivrosPromocacao(){ 
+        $conexao = ConexaoBD::getConexao();
+
+        $sql = "SELECT L.id,L.titulo,L.preco,L.quantidade,L.promocao, L.imagem,
+        GROUP_CONCAT(A.nome, '') AS autor
+        FROM livro L
+        INNER JOIN autores Aus
+        ON L.id = Aus.livro_id
+        INNER JOIN autor A
+        ON Aus.autor_id = A.id
+        WHERE L.promocao = 1
+        GROUP BY L.id";
+
+        $stmt = $conexao->query($sql);
+        
+        $discos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $discos;
+    }
+
 
     function deletarLivro(int $id){
         $conexao = ConexaoBD::getConexao();
@@ -61,16 +94,21 @@ class LivroDAO{
             DELETE FROM lista_genero WHERE livro_id=$id;
             DELETE FROM livro WHERE id=$id";
         
-        $conexao->exec($sql);
+        return $conexao->exec($sql);
     }
 
     function pesquisarLivro(String $pesquisa){
         $conexao = ConexaoBD::getConexao();
 
-        $sql = "SELECT A.id,A.titulo,A.preco,A.quantidade,C.nome FROM livro A
-        INNER JOIN autores B on A.id=B.livro_id
-        INNER JOIN autor C ON B.autor_id=C.id
-        WHERE A.titulo LIKE '%$pesquisa%' or C.nome LIKE '%$pesquisa%'";
+        $sql = "SELECT L.id,L.titulo,L.preco,L.quantidade,
+        GROUP_CONCAT(A.nome, '') AS autor
+        FROM livro L
+        INNER JOIN autores Aus
+        ON L.id = Aus.livro_id
+        INNER JOIN autor A
+        ON Aus.autor_id = A.id
+        WHERE L.titulo LIKE '%$pesquisa%' or A.nome LIKE '%$pesquisa%'
+        GROUP BY L.id";
 
         $stmt = $conexao->query($sql);
 
@@ -106,14 +144,23 @@ class LivroDAO{
     }
 
     function obterLivro(int $id){
-        $sql = "SELECT * FROM livro WHERE id=$id";
-
         $conexao = ConexaoBD::getConexao();
+
+        $sql = "SELECT L.id,L.titulo,L.preco,L.quantidade,L.promocao, L.imagem, L.descricao,
+        GROUP_CONCAT(A.nome, '') AS autor
+        FROM livro L
+        INNER JOIN autores Aus
+        ON L.id = Aus.livro_id
+        INNER JOIN autor A
+        ON Aus.autor_id = A.id
+        WHERE L.id=$id
+        GROUP BY L.id";
+
         $stmt = $conexao->query($sql);
+        
+        $discos = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $disco = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        return $disco;
+        return $discos;
     }
 
     function alterarLivro(Livro $livro, array $generos, array $autores, bool $imagem){
@@ -126,7 +173,8 @@ class LivroDAO{
                 ano_publicacao = '{$livro->getAno_publicacao()}',
                 descricao = '{$livro->getDescricao()},
                 editora = {$livro->getEditora()}',
-                imagem = {$livro->getImagem()}
+                imagem = {$livro->getImagem()},
+                promocao = {$livro->getPromocao()}
                 WHERE id = '{$livro->getId()}';
                 
                 DELETE FROM autores
@@ -136,12 +184,13 @@ class LivroDAO{
                 WHERE livro_id = {$livro->getId()}";
         }else{
             $sql = "UPDATE livro
-            SET titulo = '{$livro->getTitulo()}',
+                SET titulo = '{$livro->getTitulo()}',
                 preco = '{$livro->getPreco()}',
                 quantidade = '{$livro->getQuantidade()}',
                 ano_publicacao = '{$livro->getAno_publicacao()}',
                 descricao = '{$livro->getDescricao()}',
-                editora = '{$livro->getEditora()}'
+                editora = '{$livro->getEditora()}',
+                promocao = '{$livro->getPromocao()}'
                 WHERE id = '{$livro->getId()}';
                 
                 DELETE FROM autores
@@ -152,7 +201,7 @@ class LivroDAO{
         }
         
         
-        $conexao->exec($sql);
+        $sit = $conexao->exec($sql);
 
         foreach($generos as $genero){
             $sql = "INSERT INTO lista_genero(genero_id,livro_id)
@@ -169,5 +218,7 @@ class LivroDAO{
 
             $conexao->exec($sql);
         }
+
+        return $sit;
     }
 }
