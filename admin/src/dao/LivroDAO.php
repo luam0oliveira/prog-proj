@@ -146,7 +146,7 @@ class LivroDAO{
     function obterLivro(int $id){
         $conexao = ConexaoBD::getConexao();
 
-        $sql = "SELECT L.id,L.titulo,L.preco,L.quantidade,L.promocao, L.imagem, L.descricao,
+        $sql = "SELECT L.*,
         GROUP_CONCAT(A.nome, '') AS autor
         FROM livro L
         INNER JOIN autores Aus

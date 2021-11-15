@@ -34,6 +34,7 @@
     $titulo = $livro['titulo'];
     $preco = $livro['preco'];
     $editoraA = $livro['editora'];
+    $promocao = $livro['promocao'];
     $quantidade = $livro['quantidade'];
     $ano_publicacao = $livro['ano_publicacao'];
     $descricao = $livro['descricao'];
@@ -137,7 +138,7 @@
     </div>
 
     <!-- editora -->
-    <div class="form-group col-3">
+    <div class="form-group col-4">
         <label class="form-label" for="editoraSelect">Editora:</label>
 
         <div class="d-flex flex-row">
@@ -162,19 +163,39 @@
     </div>
 
     <!-- preco -->
-    <div class="form-group col-3">
+    <div class="form-group col-2">
         <label class="form-label" for="precoInput">Preço: </label>
         <input class="form-control" type="text" name="preco" id="precoInput" class="input-padrao" required="true" value="<?=$preco?>">
     </div>
 
+    <!-- promocao -->
+    <div class="form-group col-2">
+        <label for="form-label" for="promocaoSelect">Promocão: </label>
+        <select class="form-select" name="promocao" id="promocaoSelect">
+            <?php
+                if($promocao):
+            ?>
+                <option value="0">Inativo</option>
+                <option value="1" selected>Ativo</option>
+            <?php
+                else:
+            ?>
+                <option value="0" selected>Inativo</option>
+                <option value="1">Ativo</option>
+            <?php
+                endif;
+            ?>
+        </select>
+    </div>
+
     <!-- quantidade -->
-    <div class="form-group col-3">
+    <div class="form-group col-2">
         <label class="form-label" for="quantidadeInput">Quantidade: </label>
         <input class="form-control" type="number" name="quantidade" id="quantidadeInput" class="input-padrao" required="true" value="<?=$quantidade?>">
     </div>
 
     <!-- ano de publicacao -->
-    <div class="form-group col-3">
+    <div class="form-group col-2">
         <label class="form-label" for="anoPubInput">Ano de publicação: </label>
         <input class="form-control" type="number" name="ano_publicacao" id="anoPubInput" class="input-padrao" required="true" value="<?=$ano_publicacao?>">
     </div>

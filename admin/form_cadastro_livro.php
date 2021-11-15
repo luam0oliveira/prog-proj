@@ -27,6 +27,8 @@
         $autor->setNome($nome);
 
         $autorDAO->cadastrarAutor($autor);
+
+        header("Location: form_cadastro_livro.php?a=0");
     }
 
     if ($_GET['a']=='2'){
@@ -39,6 +41,7 @@
         $editora->setTelefone($telefone);
 
         $editoraDAO->cadastrarEditora($editora);
+        header("Location: form_cadastro_livro.php?a=0");
     }
 
     if ($_GET['a']=='3'){
@@ -47,7 +50,10 @@
         $genero->setNome($nome);
 
         $generoDAO->cadastrarGenero($genero);
+
+        header("Location: form_cadastro_livro.php?a=0");
     }
+
 
     ?>
 
@@ -104,7 +110,7 @@
             </div>
         </div>
 
-        <div class="form-group col-3">
+        <div class="form-group col-4">
             <label class="form-label" for="editoraSelect">Editora:</label>
 
             <div class="d-flex flex-row">
@@ -119,28 +125,32 @@
                 </select> 
 
                 <button class="btn btn-outline-primary rounded-circle my-0" type="button" class="btn btn-info btn-circle btn-lg" data-toggle="modal" data-target="#adicionarEditora">+</button>
-
-            </div>
-            
-            
+            </div>            
         </div>
         
         
-        <div class="form-group col-3">
+        <div class="form-group col-2">
             <label class="form-label" for="precoInput">Preço: </label>
             <input class="form-control" type="text" name="preco" id="precoInput" class="input-padrao" required="true" size=5>
         </div>
+
+        <div class="form-group col-2">
+            <label class="form-label" for="promocaoSelect">Promoção: </label>
+            <select class="form-select" name="promocao" id="promocaoSelect">
+                <option value="0" selected>Inativo</option>
+                <option value="1">Ativo</option>
+            </select>
+        </div>
         
 
-        <div class="form-group col-3">
+        <div class="form-group col-2">
             <label class="form-label" for="quantidadeInput">Quantidade: </label>
             <input class="form-control" type="number" name="quantidade" id="quantidadeInput" class="input-padrao" required="true" size=5>
         </div>
         
-        <div class="form-group col-3">
+        <div class="form-group col-2">
             <label class="form-label" for="anoPubInput">Ano de publicação: </label>
             <input class="form-control" type="number" name="ano_publicacao" id="anoPubInput" class="input-padrao" required="true" size=5>
-            
         </div>
         
         <div class="form-group col-12">

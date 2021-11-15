@@ -23,8 +23,7 @@
     $ano_publicacao = intval($_POST['ano_publicacao']);
     $descricao = $_POST['descricao'];
     $imagem = pegarImagem($_FILES);
-
-    print_r($_POST); 
+    $promocao = $_POST['promocao'];
 
     $livro = new Livro();
     $livro->setIsbn($isbn);
@@ -35,6 +34,7 @@
     $livro->setAno_publicacao($ano_publicacao);
     $livro->setDescricao($descricao);
     $livro->setImagem($imagem);
+    $livro->setPromocao($promocao);
 
     $livroDAO = new LivroDAO();
     $livroDAO->cadastraLivro($livro, $genero, $autor);

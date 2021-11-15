@@ -12,7 +12,9 @@ class GeneroDAO{
     function listarGeneros(){
         $conexao = ConexaoBD::getConexao();
         
-        $sql = "SELECT * FROM genero";
+        $sql = "SELECT *
+        FROM genero
+        ORDER BY nome ASC";
 
         $stmt = $conexao->query($sql);
 

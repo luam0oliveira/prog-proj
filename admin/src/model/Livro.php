@@ -10,6 +10,7 @@ class Livro{
     private int $ano_publicacao;
     private String $descricao;
     private String $imagem;
+    private String $promocao;
 
     public function getId(): int
     {
@@ -115,6 +116,18 @@ class Livro{
     public function setImagem($imagem)
     {
         $this->imagem = $imagem;
+
+        return $this;
+    }
+
+    public function getPromocao(): String
+    {
+        return $this->promocao;
+    }
+
+    public function setPromocao(String $promocao): self
+    {
+        $this->promocao = $promocao;
 
         return $this;
     }

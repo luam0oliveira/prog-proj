@@ -15,6 +15,7 @@
     $ano_publicacao = $_POST['ano_publicacao'];
     $descricao = $_POST['descricao'];
     $editora = $_POST['editora'];
+    $promocao = $_POST['promocao'];
     if($_FILES['imagem']['size']!=0){
         $temImagem=true;
         $imagem = pegarImagem($_FILES);
@@ -33,12 +34,10 @@
     $livro->setAno_publicacao($ano_publicacao);
     $livro->setDescricao($descricao);
     $livro->setEditora($editora);
+    $livro->setPromocao($promocao);
     if($temImagem){
         $livro->setImagem($imagem);
-    }
-
-    print_r($livro->getDescricao());
-    
+    }    
     
     $livroDAO = new LivroDAO();
     $livroDAO->alterarLivro($livro, $genero, $autor, $temImagem);

@@ -65,25 +65,63 @@
                         ?>
                         <div class="col">
                             <div class="card box">
-                                <a href="produto.html" class="card-link card-image pt-3">
-                                    <img class="card-image" src="data:image/png;base64, <?= base64_encode($livro['imagem']) ?>"  alt="...">
+                                <a href="produto.php?id=<?=$livro['id']?>" class="card-link card-image pt-3">
+                                    <img class="card-image" src="data:image/png;base64, <?=base64_encode($livro['imagem']) ?>"  alt="...">
                                 </a>
                                 <div class="card-body">
                                     <div class="titulo-autor mb-2">
                                         <a class="text-decoration-none fs-5 fw-normal text-dark ">
                                             <?= $livro['titulo']?>
-                                        </a> <br>
-                                        <a href="produto.html" class="text-decoration-none fs-6 text-black-50 text-center">
+                                        </a><br>
+                                        <a href="produto.php?id=<?=$livro['id']?>" class="text-decoration-none fs-6 text-black-50 text-center">
                                             <?= $livro['autor']?>
                                         </a>
                                     </div>
                                     
                                 </div>
-                                <a href="produto.html"
+                                <a href="produto.php?id=<?=$livro['id']?>"
                                     class="preco text-decoration-none fs-5 fw-bold text-dark mb-3">
                                     R$<?= $livro['preco']?>
                                 </a>
-                                <a href="produto.html" class="btn btn-success w-100 ">Comprar</a>
+                                <a href="produto.php?id=<?=$livro['id']?>" class="btn btn-success w-100 ">Comprar</a>
+                            </div>
+                        </div>
+                        <?php
+                            endforeach;
+                        ?>
+                    </div>
+                </div>
+            </article>
+            <article id="destaque" class="w-100 mb-4">
+                <div class="container">
+                    <h2 class="text-center">Promoção</h2>
+                    <hr class="mb-4">
+                    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1 g-4 ">
+                        <?php
+                            $livros = $livroDAO->listarLivrosPromocacao();
+
+                            foreach ($livros as $livro):
+                        ?>
+                        <div class="col">
+                            <div class="card box">
+                                <a href="produto.php?id=<?=$livro['id']?>" class="card-link card-image pt-3">
+                                    <img class="card-image" src="data:image/png;base64, <?=base64_encode($livro['imagem']) ?>"  alt="...">
+                                </a>
+                                <div class="card-body">
+                                    <div class="titulo-autor mb-2">
+                                        <a class="text-decoration-none fs-5 fw-normal text-dark ">
+                                            <?= $livro['titulo']?>
+                                        </a><br>
+                                        <a href="produto.php?id=<?=$livro['id']?>" class="text-decoration-none fs-6 text-black-50 text-center">
+                                            <?= $livro['autor']?>
+                                        </a>
+                                    </div>
+                                </div>
+                                <a href="produto.php?id=<?=$livro['id']?>"
+                                    class="preco text-decoration-none fs-5 fw-bold text-dark mb-3">
+                                    R$<?= $livro['preco']?>
+                                </a>
+                                <a href="produto.php?id=<?=$livro['id']?>" class="btn btn-success w-100 ">Comprar</a>
                             </div>
                         </div>
                         <?php

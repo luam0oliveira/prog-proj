@@ -16,7 +16,9 @@ class AutorDAO{
     function listarAutores(){
         $conexao = ConexaoBD::getConexao();
         
-        $sql = "SELECT * FROM autor";
+        $sql = "SELECT *
+        FROM autor
+        ORDER BY nome ASC";
 
         $stmt = $conexao->query($sql);
 

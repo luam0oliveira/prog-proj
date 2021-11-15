@@ -17,7 +17,9 @@ class EditoraDAO{
     function listarEditoras(){
         $conexao = ConexaoBD::getConexao();
         
-        $sql = "SELECT * FROM editora";
+        $sql = "SELECT *
+        FROM editora
+        ORDER BY nome ASC";
 
         $stmt = $conexao->query($sql);
 
