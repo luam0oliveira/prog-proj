@@ -149,6 +149,10 @@ ul>li {
     background: #c4c4c4;
 }
 
+.item-img{
+    width: 100px;
+}
+
 .according-but {
     background-color: #626262;
     color: white;

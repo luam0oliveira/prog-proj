@@ -1,7 +1,6 @@
 <?php
-    include 'components/header.php';
-    
     require_once 'admin/src/dao/LivroDAO.php';
+    include 'components/header.php';
 
     $livroDAO = new LivroDAO();
 
@@ -39,8 +38,9 @@
 
                                     <div class="botoes-compra">
                                         <div class="mb-2">
-                                            <a class="w-100 py-4 btn btn-success botoes fs-3" href="#">COMPRAR
-                                                PRODUTO</a>
+                                            <a class="w-100 py-4 btn btn-success botoes fs-3" href="cesta.php?id=<?=$livro['id']?>&a=i">
+                                                COMPRAR PRODUTO
+                                            </a>
                                         </div>
                                         <div class="d-flex">
                                             <a class="btn btn-outline-primary w-100 me-4 botoes fs-5 py-2" href="">
